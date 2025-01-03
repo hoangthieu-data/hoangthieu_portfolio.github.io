@@ -1,0 +1,669 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Huy-Hoang Thieu - Data Engineer and Analyst Portfolio</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --peach-fuzz: #a47864; /* Pantone Color of the Year 2024 */
+            --primary-color: #2d3436;
+            --secondary-color: #a47864; /* Darker peach */
+            --accent-color: #a47864; /* Lighter peach */
+            --text-color: #2d3436;
+            --background-color: #FFF5F0; /* Very light peach */
+            --card-background: #ffffff;
+            --hover-color: #FFE6D9; /* Soft peach */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        #wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        #intro {
+            text-align: center;
+            padding: 3rem 0;
+            background: linear-gradient(135deg, var(--peach-fuzz) 0%, var(--secondary-color) 100%);
+            border-radius: 20px;
+            color: white;
+            margin-bottom: 2rem;
+        }
+        .avatar-container {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 2rem;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid white;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .avatar-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: var(--card-background);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-section {
+            background: var(--card-background);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .profile-section h3 {
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--background-color);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateX(5px);
+        }
+
+        .contact-item i {
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+        }
+
+        .experience-card {
+            background: var(--card-background);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--secondary-color);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .experience-card h4 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-card h5 {
+            color: var(--text-color);
+            opacity: 0.7;
+            margin-bottom: 1rem;
+        }
+
+        .experience-card ul {
+            list-style-position: inside;
+            padding-left: 1rem;
+        }
+
+        .experience-card li {
+            margin-bottom: 0.5rem;
+        }
+
+        .education-section {
+            margin-bottom: 2rem;
+        }
+
+        .education-card {
+            background: var(--card-background);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+        }
+
+        .university-info h4 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .university-info h5 {
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .education-details {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .detail-item .label {
+            font-weight: bold;
+            color: var(--primary-color);
+            min-width: 80px;
+        }
+
+        .detail-item .value {
+            color: var(--text-color);
+        }
+
+        .detail-item .value.highlight {
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        .awards-section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--accent-color);
+        }
+
+        .awards-section h5 {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .award-card {
+            background: var(--background-color);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .award-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .award-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .award-text {
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .award-detail {
+            color: var(--text-color);
+            font-size: 0.9rem;
+        }
+
+
+        .ml-4 {
+            margin-left: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 768px) {
+            #wrapper {
+                padding: 1rem;
+            }
+
+            .profile-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+        }
+        .soft-skills {
+            margin-top: 2rem;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .soft-skills h3 {
+            color: #a47864;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 10px;
+        }
+
+        .skill-box {
+            background: #FFF5F0;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-box:hover {
+            transform: translateY(-5px);
+            background: #FFE6D9;
+        }
+
+        @media (max-width: 1024px) {
+            .skills-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .skills-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        .tech-section {
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem; /* Add margin to separate from soft skills */
+        }
+
+        .tech-section h3 {
+            color: #a47864;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #a47864;
+            padding-bottom: 0.5rem;
+        }
+
+        .category-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: #ffffff;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .category-title {
+            color: #a47864;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #FFE6D9;
+            padding-bottom: 0.5rem;
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill-card {
+            background: #FFF5F0;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            flex: 1;
+            min-width: 150px;
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-3px);
+            background: #FFE6D9;
+            box-shadow: 0 4px 12px rgba(164, 120, 100, 0.1);
+        }
+
+        .skill-card i {
+            color: #a47864;
+            font-size: 1.2rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .skill-card span {
+            color: #2d3436;
+            font-size: 1rem;
+        }
+
+        /* Make the last row of Programming & Analytics fill the space */
+        .programming-skills {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .skills-grid {
+                flex-direction: column;
+            }
+            .programming-skills {
+                grid-template-columns: 1fr;
+            }
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .nav-button {
+            padding: 1rem 2rem;
+            background: #a47864;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-button:hover {
+            background: #8b6352;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-button.active {
+            background: #8b6352;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="intro">
+            <div class="avatar-container">
+                <img src="\images\avatar.jpg" alt="Huy-Hoang Thieu">
+            </div>
+            <h1>Huy-Hoang Thieu</h1>
+            <p style="font-size: 1.2rem; margin: 1rem 0;">Data Engineer and Analyst</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/thieuhuyhoang/"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/hoangthieu-data"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+        <div class="nav-buttons">
+            <a href="index.html" class="nav-button active">About Me</a>
+            <a href="projects.html" class="nav-button">Projects</a>
+        </div>
+        <section class="profile-stats">
+            <div class="stat-card">
+                <div class="stat-number">&lt; 1</div>
+                <div>Years Experience</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">1</div>
+                <div>Publication</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">3.4</div>
+                <div>GPA / 4.0</div>
+            </div>
+        </section>
+
+        <section class="profile-section">
+            <h3>Contact Information</h3>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>District 12, HCM City</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>0965902140</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>hoangthieu.data@gmail.com</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="profile-section">
+            <h3>Professional Experience</h3>
+            <div class="experience-card">
+                <h4>Data Engineer - YODY Fashion Join Stock Company</h4>
+                <h5>Jul 2024 - Dec 2024</h5>
+                <ul>
+                    <li>
+                        <strong>Data Cleaning:</strong> Utilized Python to clean and preprocess customer and employee data
+                    </li>
+                    <li>
+                        <strong>Data Ingestion:</strong> Applied NiFi skills for data pipeline implementation
+                    </li>
+                    <li>
+                        <strong>ETL Processes:</strong> Executed Extract, Transform, Load operations
+                    </li>
+                    <li>
+                        <strong>Workflow Automation:</strong> Set up Apache Airflow workflows
+                    </li>
+                    <li>
+                        <strong>BigQuery Management:</strong> Created views and managed access control
+                    </li>
+                    <li>
+                        <strong>Cross-Functional Collaboration:</strong> Worked with data scientists and analysts
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="profile-section education-section">
+            <h3>Education</h3>
+            <div class="education-card">
+                <div class="university-info">
+                    <h4>University of Information Technology</h4>
+                    <h5>Vietnam National University HCM City</h5>
+                    <div class="education-details">
+                        <div class="detail-item">
+                            <span class="label">Major:</span>
+                            <span class="value">Information Systems</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Degree:</span>
+                            <span class="value">Bachelor of Science with Honours</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">GPA:</span>
+                            <span class="value highlight">3.4/4</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">IELTS:</span>
+                            <span class="value highlight">7.0</span>
+                            <span class="label ml-4">TOEIC:</span>
+                            <span class="value highlight">905</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="awards-section">
+                    <h5>Awards & Achievements</h5>
+                    <div class="awards-grid">
+                        <div class="award-card">
+                            <div class="award-icon">🏆</div>
+                            <div class="award-text">Full Scholarship</div>
+                            <div class="award-detail">1 term</div>
+                        </div>
+                        <div class="award-card">
+                            <div class="award-icon">🎓</div>
+                            <div class="award-text">Partial Scholarship</div>
+                            <div class="award-detail">2 terms</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="tech-section">
+            <h3>Technical Skills</h3>
+            <div class="category-container">
+                <div class="skill-category">
+                    <h4 class="category-title">Cloud & Infrastructure</h4>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <i class="fas fa-cloud"></i>
+                            <span>GCP</span>
+                        </div>
+                        <div class="skill-card">
+                            <i class="fas fa-database"></i>
+                            <span>BigQuery</span>
+                        </div>
+                        <div class="skill-card">
+                            <i class="fab fa-docker"></i>
+                            <span>Docker</span>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="skill-category">
+                    <h4 class="category-title">Data Processing</h4>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <i class="fas fa-stream"></i>
+                            <span>Apache Airflow</span>
+                        </div>
+                        <div class="skill-card">
+                            <i class="fas fa-random"></i>
+                            <span>Apache NiFi</span>
+                        </div>
+                        <div class="skill-card">
+                            <i class="fas fa-code-branch"></i>
+                            <span>GitLab</span>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="skill-category">
+                    <h4 class="category-title">Programming & Analytics</h4>
+                    <div class="programming-skills">
+                        <div class="skill-card">
+                            <i class="fas fa-database"></i>
+                            <span>SQL</span>
+                        </div>
+                        <div class="skill-card">
+                            <i class="fab fa-python"></i>
+                            <span>Python</span>
+                        </div>
+                        <div class="skill-card">
+                            <i class="fas fa-fire"></i>
+                            <span>PySpark</span>
+                        </div>
+                        <div class="skill-card">
+                            <i class="fas fa-brain"></i>
+                            <span>Machine Learning</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="soft-skills">
+            <h3>Soft Skills</h3>
+            <div class="skills-container">
+                <div class="skill-box">Data Storytelling</div>
+                <div class="skill-box">Teamwork</div>
+                <div class="skill-box">Project Management</div>
+                <div class="skill-box">Communication</div>
+                <div class="skill-box">Problem-Solving</div>
+                <div class="skill-box">Critical Thinking</div>
+                <div class="skill-box">Time Management</div>
+                <div class="skill-box">Adaptability</div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
