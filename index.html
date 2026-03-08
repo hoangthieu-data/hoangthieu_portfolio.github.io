@@ -1,739 +1,206 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Huy-Hoang Thieu - Data Engineer Portfolio</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        :root {
-            --peach-fuzz: #3498db; /* Changed to blue */
-            --primary-color: #2c3e50; /* Darker blue */
-            --secondary-color: #2980b9; /* Medium blue */
-            --accent-color: #3498db; /* Light blue */
-            --text-color: #2c3e50; /* Dark blue for text */
-            --background-color: #ecf0f1; /* Light gray background */
-            --card-background: #ffffff;
-            --hover-color: #d6eaf8; /* Soft light blue */
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: var(--background-color);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-
-        #wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        #intro {
-            text-align: center;
-            padding: 3rem 0;
-            background: linear-gradient(135deg, var(--peach-fuzz) 0%, var(--secondary-color) 100%);
-            border-radius: 20px;
-            color: white;
-            margin-bottom: 2rem;
-        }
-        .avatar-container {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 2rem;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 5px solid white;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .avatar-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .profile-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .stat-card {
-            background: var(--card-background);
-            padding: 1.5rem;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--secondary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .profile-section {
-            background: var(--card-background);
-            border-radius: 15px;
-            padding: 2rem;
-            margin: 2rem 0;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .profile-section h3 {
-            color: var(--secondary-color);
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-        }
-
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem;
-            background: var(--background-color);
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-        }
-
-        .contact-item:hover {
-            transform: translateX(5px);
-        }
-
-        .contact-item i {
-            color: var(--secondary-color);
-            font-size: 1.2rem;
-        }
-
-        .experience-card {
-            background: var(--card-background);
-            border-radius: 15px;
-            padding: 1.5rem;
-            margin: 1rem 0;
-            border-left: 4px solid var(--secondary-color);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .experience-card h4 {
-            color: var(--secondary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .experience-card h5 {
-            color: var(--text-color);
-            opacity: 0.7;
-            margin-bottom: 1rem;
-        }
-
-        .experience-card ul {
-            list-style-position: inside;
-            padding-left: 1rem;
-        }
-
-        .experience-card li {
-            margin-bottom: 0.5rem;
-        }
-
-        .education-section {
-            margin-bottom: 2rem;
-        }
-
-        .education-card {
-            background: var(--card-background);
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
-        }
-
-        .university-info h4 {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .university-info h5 {
-            color: var(--secondary-color);
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .education-details {
-            display: grid;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .detail-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .detail-item .label {
-            font-weight: bold;
-            color: var(--primary-color);
-            min-width: 80px;
-        }
-
-        .detail-item .value {
-            color: var(--text-color);
-        }
-
-        .detail-item .value.highlight {
-            color: var(--secondary-color);
-            font-weight: bold;
-        }
-
-        .awards-section {
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 2px solid var(--accent-color);
-        }
-
-        .awards-section h5 {
-            color: var(--primary-color);
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .awards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .award-card {
-            background: var(--background-color);
-            padding: 1.5rem;
-            border-radius: 15px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .award-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .award-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .award-text {
-            font-weight: bold;
-            color: var(--secondary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .award-detail {
-            color: var(--text-color);
-            font-size: 0.9rem;
-        }
-
-
-        .ml-4 {
-            margin-left: 1rem;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            transition: transform 0.3s ease;
-        }
-
-        .social-links a:hover {
-            transform: scale(1.2);
-        }
-
-        @media (max-width: 768px) {
-            #wrapper {
-                padding: 1rem;
-            }
-
-            .profile-stats {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-info {
-                grid-template-columns: 1fr;
-            }
-        }
-        .soft-skills {
-            margin-top: 2rem;
-            padding: 20px;
-            background: #ffffff;
-            border-radius: 15px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .soft-skills h3 {
-            color: var(--secondary-color);
-            margin-bottom: 20px;
-            font-size: 24px;
-        }
-
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            padding: 10px;
-        }
-
-        .skill-box {
-            background: var(--background-color);
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            min-height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.3s ease;
-        }
-
-        .skill-box:hover {
-            transform: translateY(-5px);
-            background: var(--hover-color);
-        }
-
-        @media (max-width: 1024px) {
-            .skills-container {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .skills-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 480px) {
-            .skills-container {
-                grid-template-columns: 1fr;
-            }
-        }
-        .tech-section {
-            padding: 20px;
-            background: #ffffff;
-            border-radius: 15px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2rem; /* Add margin to separate from soft skills */
-        }
-
-        .tech-section h3 {
-            color: var(--secondary-color);
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
-            border-bottom: 2px solid var(--secondary-color);
-            padding-bottom: 0.5rem;
-        }
-
-        .category-container {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .skill-category {
-            background: #ffffff;
-            border-radius: 15px;
-            padding: 1.5rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        }
-
-        .category-title {
-            color: var(--secondary-color);
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            border-bottom: 1px solid var(--hover-color);
-            padding-bottom: 0.5rem;
-        }
-
-        .skills-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .skill-card {
-            background: var(--background-color);
-            padding: 1rem 1.5rem;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            flex: 1;
-            min-width: 150px;
-            transition: all 0.3s ease;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-3px);
-            background: var(--hover-color);
-            box-shadow: 0 4px 12px rgba(41, 128, 185, 0.1);
-        }
-
-        .skill-card i {
-            color: var(--secondary-color);
-            font-size: 1.2rem;
-            width: 20px;
-            text-align: center;
-        }
-
-        .skill-card span {
-            color: var(--text-color);
-            font-size: 1rem;
-        }
-
-        /* Make the last row of Programming & Analytics fill the space */
-        .programming-skills {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-        }
-
-        @media (max-width: 768px) {
-            .skills-grid {
-                flex-direction: column;
-            }
-            .programming-skills {
-                grid-template-columns: 1fr;
-            }
-        }
-        .nav-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .nav-button {
-            padding: 1rem 2rem;
-            background: var(--secondary-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-button:hover {
-            background: var(--primary-color);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-        }
-
-        .nav-button.active {
-            background: var(--primary-color);
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Thieu Huy Hoang | Data Engineer</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body{font-family:'Inter',sans-serif}
+</style>
 </head>
-<body>
-    <div id="wrapper">
-        <div id="intro">
-            <div class="avatar-container">
-                <img src="images/avt_hoang.jpg" alt="Huy-Hoang Thieu">
-            </div>
-            <h1>Huy-Hoang Thieu</h1>
-            <p style="font-size: 1.2rem; margin: 1rem 0;">Data Engineer</p>
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/thieuhuyhoang/"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/hoangthieu-data"><i class="fab fa-github"></i></a>
-            </div>
-        </div>
-        <div class="nav-buttons">
-            <a href="index.html" class="nav-button active">About Me</a>
-        </div>
-        <section class="profile-stats">
-            <div class="stat-card">
-                <div class="stat-number">1</div>
-                <div>Years Experience</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">1</div>
-                <div>Publication</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">3.7</div>
-                <div>GPA / 4.0</div>
-            </div>
-        </section>
 
-        <section class="profile-section">
-            <h3>Contact Information</h3>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>District 12, HCM City</span>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <span>0965902140</span>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>hoangthieu.data@gmail.com</span>
-                </div>
-            </div>
-        </section>
+<body class="bg-slate-950 text-slate-200">
 
-        <section class="profile-section">
-            <h3>Professional Experience</h3>
-            <div class="experience-card">
-                <h4>Data Engineer - AHAMOVE</h4>
-                <h5>Jan 2025 - Present</h5>
-                <ul>
-                    <li>
-                        <strong>Data Modeling:</strong> Using dbt to redesign and model core tables for improved analytics
-                    </li>
-                    <li>
-                        <strong>Workflow Automation:</strong> Implemented Airflow DAGs for automated data pipelines
-                    </li>
-                    <li>
-                        <strong>Data Quality Monitoring:</strong> Set up Airflow alerts to detect schema changes and new values
-                    </li>
-                    <li>
-                        <strong>ETL Development:</strong> Built robust data transformation workflows
-                    </li>
-                    <li>
-                        <strong>Documentation:</strong> Created comprehensive data dictionary for business users
-                    </li>
-                    <li>
-                        <strong>Performance Optimization:</strong> Improved query efficiency by 30% through model optimization
-                    </li>
-                </ul>
-            </div>
-            <div class="experience-card">
-                <h4>Data Engineer - YODY Fashion Join Stock Company</h4>
-                <h5>Jul 2024 - Dec 2024</h5>
-                <ul>
-                    <li>
-                        <strong>Data Cleaning:</strong> Utilized Python to clean and preprocess customer and employee data
-                    </li>
-                    <li>
-                        <strong>Data Ingestion:</strong> Applied NiFi skills for data pipeline implementation
-                    </li>
-                    <li>
-                        <strong>ETL Processes:</strong> Executed Extract, Transform, Load operations
-                    </li>
-                    <li>
-                        <strong>Workflow Automation:</strong> Set up Apache Airflow workflows
-                    </li>
-                    <li>
-                        <strong>BigQuery Management:</strong> Created views and managed access control
-                    </li>
-                    <li>
-                        <strong>Cross-Functional Collaboration:</strong> Worked with data scientists and analysts
-                    </li>
-                </ul>
-            </div>
-        </section>
+<!-- HERO -->
+<section class="max-w-6xl mx-auto px-6 py-20">
+<div class="grid md:grid-cols-2 gap-12 items-center">
 
-        <section class="profile-section">
-            <h3>Projects</h3>
-            <div class="experience-card">
-                <h4>Data Observability with Airflow</h4>
-                <h5>AHAMOVE | Feb 2025 - Present</h5>
-                <ul>
-                    <li>
-                        <strong>Schema Change Detection:</strong> Created Airflow DAGs to monitor and alert on schema changes in source data
-                    </li>
-                    <li>
-                        <strong>Data Quality Checks:</strong> Implemented validation rules to detect anomalies and new values
-                    </li>
-                    <li>
-                        <strong>Alerting System:</strong> Set up Slack notifications for data quality issues requiring immediate attention
-                    </li>
-                    <li>
-                        <strong>Documentation:</strong> Maintained repository of data quality rules and standards
-                    </li>
-                </ul>
-            </div>
-            <div class="experience-card">
-                <h4>Core Data Model Redesign with dbt</h4>
-                <h5>AHAMOVE | Jan 2025 - Present</h5>
-                <ul>
-                    <li>
-                        <strong>Data Modeling:</strong> Redesigned core fact and dimension tables using dbt
-                    </li>
-                    <li>
-                        <strong>Documentation:</strong> Implemented dbt docs for self-service data discovery
-                    </li>
-                    <li>
-                        <strong>Testing:</strong> Developed comprehensive data tests to ensure data integrity
-                    </li>
-                    <li>
-                        <strong>CI/CD:</strong> Set up continuous integration pipeline for dbt models
-                    </li>
-                    <li>
-                        <strong>Performance:</strong> Optimized query performance through materialization strategies
-                    </li>
-                </ul>
-            </div>
-        </section>
+<div>
+<h1 class="text-5xl font-bold mb-6">Thieu Huy Hoang</h1>
+<p class="text-xl text-sky-400 mb-6">Data Engineer</p>
 
-        <section class="profile-section education-section">
-            <h3>Education</h3>
-            <div class="education-card">
-                <div class="university-info">
-                    <h4>University of Information Technology</h4>
-                    <h5>Vietnam National University HCM City</h5>
-                    <div class="education-details">
-                        <div class="detail-item">
-                            <span class="label">Major:</span>
-                            <span class="value">Information Systems</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="label">Degree:</span>
-                            <span class="value">Bachelor of Science with Honours</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="label">GPA:</span>
-                            <span class="value highlight">3.7/4</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="label">IELTS:</span>
-                            <span class="value highlight">7.0</span>
-                            <span class="label ml-4">TOEIC:</span>
-                            <span class="value highlight">905</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="awards-section">
-                    <h5>Awards & Achievements</h5>
-                    <div class="awards-grid">
-                        <div class="award-card">
-                            <div class="award-icon">🏆</div>
-                            <div class="award-text">Full Scholarship</div>
-                            <div class="award-detail">1 term</div>
-                        </div>
-                        <div class="award-card">
-                            <div class="award-icon">🎓</div>
-                            <div class="award-text">Partial Scholarship</div>
-                            <div class="award-detail">2 terms</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<p class="text-slate-400 leading-relaxed mb-8">
+Data Engineer specializing in building scalable data pipelines, optimizing warehouse performance and enabling reliable analytics platforms. Experienced with modern data stack including dbt, Airflow, GCP and distributed data processing.
+</p>
 
-        <section class="tech-section">
-            <h3>Technical Skills</h3>
-            <div class="category-container">
-                <div class="skill-category">
-                    <h4 class="category-title">Cloud & Infrastructure</h4>
-                    <div class="skills-grid">
-                        <div class="skill-card">
-                            <i class="fas fa-cloud"></i>
-                            <span>GCP</span>
-                        </div>
-                        <div class="skill-card">
-                            <i class="fas fa-database"></i>
-                            <span>BigQuery</span>
-                        </div>
-                        <div class="skill-card">
-                            <i class="fab fa-docker"></i>
-                            <span>Docker</span>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="skill-category">
-                    <h4 class="category-title">Data Processing</h4>
-                    <div class="skills-grid">
-                        <div class="skill-card">
-                            <i class="fas fa-stream"></i>
-                            <span>Apache Airflow</span>
-                        </div>
-                        <div class="skill-card">
-                            <i class="fas fa-layer-group"></i>
-                            <span>dbt</span>
-                        </div>
-                        <div class="skill-card">
-                            <i class="fas fa-random"></i>
-                            <span>Apache NiFi</span>
-                        </div>
-                        <div class="skill-card">
-                            <i class="fas fa-code-branch"></i>
-                            <span>GitLab</span>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="skill-category">
-                    <h4 class="category-title">Programming & Analytics</h4>
-                    <div class="programming-skills">
-                        <div class="skill-card">
-                            <i class="fas fa-database"></i>
-                            <span>SQL</span>
-                        </div>
-                        <div class="skill-card">
-                            <i class="fab fa-python"></i>
-                            <span>Python</span>
-                        </div>
-                        <div class="skill-card">
-                            <i class="fas fa-fire"></i>
-                            <span>PySpark</span>
-                        </div>
-                        <div class="skill-card">
-                            <i class="fas fa-brain"></i>
-                            <span>Machine Learning</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<div class="flex gap-4">
+<a href="mailto:hoangthieu.data@gmail.com" class="bg-sky-500 hover:bg-sky-600 px-6 py-3 rounded-xl font-medium">Contact</a>
+<a href="https://www.linkedin.com/in/thieuhuyhoang" target="_blank" class="border border-slate-700 hover:border-sky-400 px-6 py-3 rounded-xl">LinkedIn</a>
+</div>
+</div>
 
-        <div class="soft-skills">
-            <h3>Soft Skills</h3>
-            <div class="skills-container">
-                <div class="skill-box">Data Storytelling</div>
-                <div class="skill-box">Teamwork</div>
-                <div class="skill-box">Project Management</div>
-                <div class="skill-box">Communication</div>
-                <div class="skill-box">Problem-Solving</div>
-                <div class="skill-box">Critical Thinking</div>
-                <div class="skill-box">Time Management</div>
-                <div class="skill-box">Adaptability</div>
-            </div>
-        </div>
+<div class="bg-slate-900 p-8 rounded-2xl border border-slate-800">
+<p class="text-sm text-slate-400 mb-3">Location</p>
+<p class="mb-4">Ho Chi Minh City</p>
 
-    </div>
+<p class="text-sm text-slate-400 mb-3">Email</p>
+<p class="mb-4">hoangthieu.data@gmail.com</p>
+
+<p class="text-sm text-slate-400 mb-3">Phone</p>
+<p>+84 965 902 140</p>
+</div>
+
+</div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="max-w-6xl mx-auto px-6 py-16">
+<h2 class="text-3xl font-semibold mb-12">Experience</h2>
+
+<div class="space-y-8">
+
+<div class="bg-slate-900 border border-slate-800 p-8 rounded-2xl">
+<div class="flex justify-between flex-wrap gap-4 mb-4">
+<h3 class="text-xl font-semibold">Deliveree</h3>
+<span class="text-slate-400">Jan 2026 — Present</span>
+</div>
+
+<p class="text-sky-400 mb-4">Data Engineer</p>
+
+<ul class="list-disc list-inside text-slate-400 space-y-2">
+<li>Develop data transformation models using <b>dbt</b> to standardize analytical datasets.</li>
+<li>Build ingestion workflows using <b>Apache NiFi</b> to crawl data from <b>S3</b>, APIs and internal systems.</li>
+<li>Improve reliability and maintainability of the company data platform.</li>
+</ul>
+</div>
+
+<div class="bg-slate-900 border border-slate-800 p-8 rounded-2xl">
+<div class="flex justify-between flex-wrap gap-4 mb-4">
+<h3 class="text-xl font-semibold">Ahamove</h3>
+<span class="text-slate-400">Jan 2025 — Jan 2026</span>
+</div>
+
+<p class="text-sky-400 mb-4">Data Engineer</p>
+
+<ul class="list-disc list-inside text-slate-400 space-y-2">
+<li>Re‑engineered core data model reducing query resource usage by ~10× and runtime by 3×.</li>
+<li>Optimized invoice processing from 27h → 30min using improved ETL design.</li>
+<li>Built internal data agent for SQL optimization and metadata exploration.</li>
+<li>Collaborated with analytics teams to build scalable datamarts.</li>
+</ul>
+</div>
+
+<div class="bg-slate-900 border border-slate-800 p-8 rounded-2xl">
+<div class="flex justify-between flex-wrap gap-4 mb-4">
+<h3 class="text-xl font-semibold">YODY</h3>
+<span class="text-slate-400">May 2024 — Dec 2024</span>
+</div>
+
+<p class="text-sky-400 mb-4">Data Engineer</p>
+
+<ul class="list-disc list-inside text-slate-400 space-y-2">
+<li>Data cleaning and preprocessing using Python, Pandas, NumPy and PySpark.</li>
+<li>Built ETL pipelines using Airflow on GCP (BigQuery, Dataflow, GCS).</li>
+<li>Optimized warehouse tables to reduce query cost.</li>
+</ul>
+</div>
+
+</div>
+</section>
+
+<!-- PROJECTS -->
+<section class="max-w-6xl mx-auto px-6 py-16">
+<h2 class="text-3xl font-semibold mb-12">Featured Projects</h2>
+
+<div class="grid md:grid-cols-2 gap-8">
+
+<div class="bg-slate-900 border border-slate-800 p-8 rounded-2xl">
+<h3 class="text-xl font-semibold mb-3">Data Core Re‑engineering</h3>
+<p class="text-sky-400 mb-4">Ahamove</p>
+<p class="text-slate-400 mb-4">Redesigned the core data model and warehouse structure to significantly improve query efficiency for analytics workloads.</p>
+<ul class="list-disc list-inside text-slate-400 space-y-2">
+<li>Reduced warehouse resource usage by ~10×</li>
+<li>Improved query runtime by 3×</li>
+<li>Standardized data models for cross-team analytics</li>
+</ul>
+</div>
+
+<div class="bg-slate-900 border border-slate-800 p-8 rounded-2xl">
+<h3 class="text-xl font-semibold mb-3">Invoice Processing Optimization</h3>
+<p class="text-sky-400 mb-4">Ahamove</p>
+<p class="text-slate-400 mb-4">Optimized the ETL workflow for partner invoice generation handling large-scale logistics data.</p>
+<ul class="list-disc list-inside text-slate-400 space-y-2">
+<li>Reduced processing time from 27 hours → 30 minutes</li>
+<li>Refactored aggregation logic and partition strategy</li>
+<li>Automated pipeline scheduling</li>
+</ul>
+</div>
+
+<div class="bg-slate-900 border border-slate-800 p-8 rounded-2xl">
+<h3 class="text-xl font-semibold mb-3">Internal Data Agent</h3>
+<p class="text-sky-400 mb-4">Ahamove</p>
+<p class="text-slate-400 mb-4">Built an internal assistant to help analysts explore data schemas and optimize SQL queries.</p>
+<ul class="list-disc list-inside text-slate-400 space-y-2">
+<li>Integrated metadata APIs with prompting</li>
+<li>Helps teams understand table structure faster</li>
+<li>Supports SQL optimization suggestions</li>
+</ul>
+</div>
+
+<div class="bg-slate-900 border border-slate-800 p-8 rounded-2xl">
+<h3 class="text-xl font-semibold mb-3">Automated Data Pipelines</h3>
+<p class="text-sky-400 mb-4">GCP / Airflow / dbt</p>
+<p class="text-slate-400 mb-4">Designed end-to-end ETL pipelines for ingestion, transformation and analytics serving.</p>
+<ul class="list-disc list-inside text-slate-400 space-y-2">
+<li>Airflow orchestration on GCP</li>
+<li>Data ingestion from APIs, S3 and internal systems</li>
+<li>Transformation layer built using dbt</li>
+</ul>
+</div>
+
+</div>
+</section>
+
+<!-- SKILLS -->
+<section class="max-w-6xl mx-auto px-6 py-16">
+<h2 class="text-3xl font-semibold mb-12">Tech Stack</h2>
+
+<div class="grid md:grid-cols-4 gap-6">
+
+<div class="bg-slate-900 border border-slate-800 p-6 rounded-xl">
+<h3 class="font-semibold mb-4">Programming</h3>
+<p class="text-slate-400">SQL<br>Python<br>PySpark</p>
+</div>
+
+<div class="bg-slate-900 border border-slate-800 p-6 rounded-xl">
+<h3 class="font-semibold mb-4">Data</h3>
+<p class="text-slate-400">BigQuery<br>PostgreSQL<br>ClickHouse</p>
+</div>
+
+<div class="bg-slate-900 border border-slate-800 p-6 rounded-xl">
+<h3 class="font-semibold mb-4">Data Stack</h3>
+<p class="text-slate-400">dbt<br>Airflow<br>Apache NiFi</p>
+</div>
+
+<div class="bg-slate-900 border border-slate-800 p-6 rounded-xl">
+<h3 class="font-semibold mb-4">Tools</h3>
+<p class="text-slate-400">Databricks<br>Metabase<br>OpenMetadata<br>GitLab</p>
+</div>
+
+</div>
+</section>
+
+<!-- EDUCATION -->
+<section class="max-w-6xl mx-auto px-6 py-16">
+<h2 class="text-3xl font-semibold mb-10">Education</h2>
+
+<div class="bg-slate-900 border border-slate-800 p-8 rounded-2xl">
+<h3 class="text-xl font-semibold">University of Information Technology — VNU HCM</h3>
+<p class="text-slate-400 mt-2">Bachelor of Engineering — Information Systems</p>
+
+<div class="flex gap-8 mt-6 text-slate-400">
+<span>GPA: 3.7 / 4.0</span>
+<span>IELTS: 7.0</span>
+<span>TOEIC: 905</span>
+</div>
+</div>
+</section>
+
+<footer class="text-center text-slate-500 py-10">
+© 2026 Thieu Huy Hoang
+</footer>
+
 </body>
 </html>
